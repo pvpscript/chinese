@@ -25,7 +25,7 @@ ghc -o chinese main.hs
 ```
 
 # Usage
-The usage is very simple. The program takes one of two parameters, `--encode` or `-e`, to encode a string into chinese characters and `--decode` or `-d` to revert the process.
+The program takes one of two parameters, `--encode` or `-e`, to encode a string into chinese characters and `--decode` or `-d` to revert the process.
 
 ## Examples
 ```sh
