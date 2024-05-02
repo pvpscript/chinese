@@ -24,7 +24,35 @@ cd chinese
 ghc -o chinese main.hs
 ```
 
-# Using it
+# Usage
+The usage is very simple. The program takes one of two parameters, `--encode` or `-e`, to encode a string into chinese characters and `--decode` or `-d` to revert the process.
+
+## Examples
+```sh
+$ ./chinese -d 獣牡瑣栠灡灥爠浹獳
+scratch paper myss
+```
+
+```sh
+$ ./chinese -e hello world
+桥汬漀
+睯牬搀
+```
+
+```sh
+$ ./chinese -e seperate words "quite the big string"
+獥灥牡瑥
+睯牤猀
+煵楴攠瑨攠扩朠獴物湧
+```
+
+```sh
+$ ./chinese -d $(./chinese -e go to chinese "and go back")
+go
+to
+chinese
+and go back
+```
 
 # Limitations
 The chinese character set is comprised in the range `0x4E00` to `0x9FFF`, so, by looking at how this was implemented, it becomes clear that it may not always work, or at least it won't work for a few ASCII characters.
