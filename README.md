@@ -5,7 +5,7 @@ Make a sentence look like it's chinese
 I've seen a [post](reddit.com/r/translator/comments/1cfz001/unknown_to_english/) on the _transator_ subreddit of a white board with some chinese characters written in it. Those characters appeared to be random and, as it turns out, they were actually hiding a message in a very interesting way, so my immediate thought was: "Let's write some code".
 
 The image that shows the chinese characters can be seen below
-![The original image](https://preview.redd.it/unknown-to-english-v0-67d2r4tb6fxc1.jpeg?width=1080&crop=smart&auto=webp&s=f0e01250c9ec05ea9dbe74243bacbc21f2365aec "The original image")
+![The original image](original-image.jpeg "The original image")
 A transcription for the characters is: "獣牡瑣栠灡灥爠浹獳"
 
 In order to decode the message, one must take the characters on this board and convert it to its ASCII representation, which yields the following UTF-16 representation in hex, `0x7363 0x7261 0x7463 0x6820 0x7061 0x7065 0x7220 0x6D79 0x7373`. Then, separate each octet in its own value, to get `0x73 0x63 0x72 0x61 0x74 0x63 0x68 0x20 0x70 0x61 0x70 0x65 0x72 0x20 0x6D 0x79 0x73 0x73`, that if taken their representation in UTF-8, they reveal the message `scratch paper myss`.
