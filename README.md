@@ -2,7 +2,7 @@
 Make a sentence look like it's chinese
 
 # What
-I've seen a [post](reddit.com/r/translator/comments/1cfz001/unknown_to_english/) on the _transator_ subreddit of a white board with some chinese characters written in it. Those characters appeared to be random and, as it turns out, they were actually hiding a message in a very interesting way, so my immediate thought was: "Let's write some code".
+I've seen a [post](https://www.reddit.com/r/translator/comments/1cfz001/unknown_to_english/) on the _transator_ subreddit of a white board with some chinese characters written in it. Those characters appeared to be random and, as it turns out, they were actually hiding a message in a very interesting way, so my immediate thought was: "Let's write some code".
 
 The image that shows the chinese characters can be seen below
 ![The original image](original-image.jpeg "The original image")
