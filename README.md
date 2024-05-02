@@ -55,9 +55,28 @@ and go back
 ```
 
 # Limitations
-The chinese character set is comprised in the range `0x4E00` to `0x9FFF`, so, by looking at how this was implemented, it becomes clear that it may not always work, or at least it won't work for a few ASCII characters.
-I simply wanted to replicate the idea presented by deciphered code above, so this little program simply transforms a list of characters into pairs of two octets, then converts them back into a character representation, which may or may not fall between the chinese character range, but overall it works okay.
+[This document](https://www.unicode.org/versions/Unicode15.0.0/ch18.pdf) shows, in table `18-1`, in what ASCII ranges the chinese characters are located.
+```
+Block                                   Range       Comment
+CJK Unified Ideographs                  4E00-9FFF   Common
+CJK Unified Ideographs Extension A      3400-4DBF   Rare
+CJK Unified Ideographs Extension B      20000-2A6DF Rare, historic
+CJK Unified Ideographs Extension C      2A700–2B73F Rare, historic
+CJK Unified Ideographs Extension D      2B740–2B81F Uncommon, some in current use
+CJK Unified Ideographs Extension E      2B820–2CEAF Rare, historic
+CJK Unified Ideographs Extension F      2CEB0–2EBEF  Rare, historic
+CJK Unified Ideographs Extension G      30000–3134F  Rare, historic
+CJK Unified Ideographs Extension H      31350–323AF Rare, historic
+CJK Compatibility Ideographs            F900-FAFF   Duplicates, unifiable variants, corporate characters
+CJK Compatibility Ideographs Supplement 2F800-2FA1F Unifiable variants
+```
 
-The first element in a pair of the octets is created by shifting left the character value by **8 bits**, which is the same than **multiplying by 256**. So, in order for the algorithm to present a chinese character, the first element in the pair of octets must have a value of **at least 78**, which translates to the character **"N"**. And, the value must be **at most 159**, that is translated to the character **"ƒ"** and falls in the extended ASCII part of the table. For the second value in the octet pair, it can be anything between **0 and 255**, or **0x0 and 0xFF**.
+Using the extended ASCII range as a parameters, character values can go between 0 and 255, so, for this example, we will only take into consideration the ranges `0x3400` to `0x4DBF` and `0x4E00` to `0x9FFF`.
+So, by looking at how this was implemented, it becomes clear that it may not always work, or at least it won't work for a few ASCII characters.
+I simply wanted to replicate the idea presented by the deciphered code in the above image, so this little program simply transforms a list of characters into pairs of two octets, then converts them back into a character representation, which may or may not fall between the chinese character range, but overall it works okay.
+
+The first element in a pair of the octets is created by shifting left the character value by **8 bits**, which is the same than **multiplying by 256**. Therefore, in order for the algorithm to present a chinese character, the first element in the pair of octets must have a value **greater or equal to 52**, which translates to the character **"4" (the number 4)**. However, in case the first octet is equal to 77 (**the character "M"**), then the second octet must be of a value of **at most 191**, which is the character **"¿"**. Otherwise, it falls off of the leftmost value of the first range.
+
+Still on the first octet, the maximum value must be of **at most 159**, that is translated to the character **"ƒ"** and falls in the extended ASCII part of the table. For the second value in the octet pair, it can be anything between **0 and 255**, or **0x0 and 0xFF**, unless the first value is **77**, as discussed previously.
 
 Knowing this, it becomes obvious that this is not a very good way to map characters of the latin alphabet into chinese characters, but that's just not the point of this, it never was.
