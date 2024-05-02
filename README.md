@@ -11,6 +11,18 @@ A transcription for the characters is: "獣牡瑣栠灡灥爠浹獳"
 In order to decode the message, one must take the characters on this board and convert it to its ASCII representation, which yields the following UTF-16 representation in hex, `0x7363 0x7261 0x7463 0x6820 0x7061 0x7065 0x7220 0x6D79 0x7373`. Then, separate each octet in its own value, to get `0x73 0x63 0x72 0x61 0x74 0x63 0x68 0x20 0x70 0x61 0x70 0x65 0x72 0x20 0x6D 0x79 0x73 0x73`, that if taken their representation in UTF-8, they reveal the message `scratch paper myss`.
 
 # Installation
+First, make sure you have a Haskell compiler installed. In case you don't, one can be downloaded here: https://www.haskell.org/ghc/
+
+Then, clone this repository
+```sh
+git clone https://github.com/pvpscript/chinese
+```
+
+Go inside the cloned folder and compile it
+```sh
+cd chinese
+ghc -o chinese main.hs
+```
 
 # Using it
 
