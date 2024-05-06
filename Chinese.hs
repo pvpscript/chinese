@@ -5,20 +5,20 @@ import Data.Char (ord, chr)
 
 toPairedChars :: String -> [Char]
 toPairedChars str =
-    map chr $ strToPairedOctets str
-    where
-      strToPairedOctets :: String -> [Int]
-      strToPairedOctets str =
-          groupOctets $ map ord str
-          where
-            groupOctets :: [Int] -> [Int]
-            groupOctets [] = []
-            groupOctets [x] = [x `shiftL` 8]
-            groupOctets (x:y:xs) =
-              groupOctets' x y : groupOctets xs
-              where
-                groupOctets' :: Int -> Int -> Int
-                groupOctets' left right = (left `shiftL` 8) .|. right
+  map chr $ strToPairedOctets str
+  where
+    strToPairedOctets :: String -> [Int]
+    strToPairedOctets str =
+      groupOctets $ map ord str
+        where
+          groupOctets :: [Int] -> [Int]
+          groupOctets [] = []
+          groupOctets [x] = [x `shiftL` 8]
+          groupOctets (x:y:xs) =
+            groupOctets' x y : groupOctets xs
+            where
+              groupOctets' :: Int -> Int -> Int
+              groupOctets' left right = (left `shiftL` 8) .|. right
 
 fromPairedChars :: [Char] -> String
 fromPairedChars chars =
